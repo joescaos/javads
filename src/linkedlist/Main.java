@@ -3,35 +3,21 @@ package linkedlist;
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList(4);
+        LinkedList myList = new LinkedList(1);
+        myList.append(2);
+        myList.append(3);
+        myList.append(4);
+        myList.append(5);
 
-        linkedList.prepend(5);
-        linkedList.prepend(6);
+        //System.out.println(myList.findMiddleNode().value);
 
-        linkedList.printList();
+        /*myList.append(6);
+        System.out.println(myList.findMiddleNode().value);*/
 
-        System.out.println("node removed: " + linkedList.removeFirst().value);
-        linkedList.append(9);
-        System.out.println();
-        linkedList.printList();
-        System.out.println();
+        myList.append(7);
+        myList.append(8);
+        System.out.println(myList.findMiddleNode().value);
 
-        linkedList.set(2, 10);
-        linkedList.printList();
-        System.out.println();
-
-        linkedList.insert(1, 1);
-        linkedList.printList();
-        System.out.println();
-
-        System.out.println(linkedList.remove(2).value);
-        linkedList.append(45);
-        linkedList.printList();
-        System.out.println();
-
-        linkedList.reverse();
-
-        linkedList.printList();
 
     }
 }
