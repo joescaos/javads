@@ -11,13 +11,6 @@ public class Main {
         myDLL.printList();
         System.out.println();
 
-        System.out.println("Element removed: " + myDLL.removeFirst().value);
-        System.out.println("Element removed: " + myDLL.removeFirst().value);
-        System.out.println("Element removed: " + myDLL.removeFirst().value);
-        System.out.println("Element removed: " + myDLL.removeFirst().value);
-        System.out.println("Element removed: " + myDLL.removeFirst().value);
-        System.out.println("Element removed: " + myDLL.removeFirst());
-        System.out.println();
-        myDLL.printList();
+        System.out.println(myDLL.get(2).value);
     }
 }
