@@ -18,5 +18,9 @@ public class Main {
         myDLL.insert(3, 5);
         myDLL.printList();
 
+        System.out.println("Node removed" + myDLL.remove(3).value);
+        System.out.println();
+        myDLL.printList();
+
     }
 }
