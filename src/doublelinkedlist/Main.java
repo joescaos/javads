@@ -11,6 +11,12 @@ public class Main {
         myDLL.printList();
         System.out.println();
 
-        System.out.println(myDLL.get(2).value);
+        myDLL.set(2, 4);
+        myDLL.printList();
+
+        System.out.println();
+        myDLL.insert(3, 5);
+        myDLL.printList();
+
     }
 }
