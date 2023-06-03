@@ -31,4 +31,8 @@ public class HashTable {
             }
         }
     }
+
+    private int hash(String key) {
+        return key.hashCode();
+    }
 }
