@@ -10,22 +10,32 @@ public class Main {
         myBST.insert(21);
         myBST.insert(76);
         myBST.insert(18);
+        myBST.insert(27);
         myBST.insert(52);
         myBST.insert(82);
 
-        myBST.insert(27);
-
         System.out.println(myBST.root.left.right.value);
 
-        System.out.println("My tree contains 27 " + myBST.contains(27));
-        System.out.println("My tree contains 52 " + myBST.contains(52));
-        System.out.println("My tree contains 82 " + myBST.contains(82));
-        System.out.println("My tree contains 11 " + myBST.contains(11));
-        System.out.println("My tree contains 96 " + myBST.contains(96));
+        System.out.println("My tree contains 27 " + myBST.rContains(27));
+        System.out.println("My tree contains 52 " + myBST.rContains(52));
+        System.out.println("My tree contains 82 " + myBST.rContains(82));
+        System.out.println("My tree contains 11 " + myBST.rContains(11));
+        System.out.println("My tree contains 96 " + myBST.rContains(96));
         System.out.println();
 
         myBST.insert(96);
-        System.out.println("My tree contains 96 " + myBST.contains(96));
+        System.out.println("My tree contains 96 " + myBST.rContains(96));
+
+        BinarySearchTree myBST2 = new BinarySearchTree();
+        myBST2.rInsert(2);
+        myBST2.rInsert(1);
+        myBST2.rInsert(3);
+        myBST2.rInsert(10);
+
+        System.out.println("\nRoot: " +  myBST2.root.value);
+        System.out.println("Root->Left: " +  myBST2.root.left.value);
+        System.out.println("Root->Right: " +  myBST2.root.right.value);
+        System.out.println("Root->Right->Right: " +  myBST2.root.right.right.value);
 
     }
 }
