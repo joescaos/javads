@@ -30,12 +30,15 @@ public class Main {
         myBST2.rInsert(2);
         myBST2.rInsert(1);
         myBST2.rInsert(3);
-        myBST2.rInsert(10);
 
         System.out.println("\nRoot: " +  myBST2.root.value);
         System.out.println("Root->Left: " +  myBST2.root.left.value);
         System.out.println("Root->Right: " +  myBST2.root.right.value);
-        System.out.println("Root->Right->Right: " +  myBST2.root.right.right.value);
+
+        myBST2.deleteNode(2);
+        System.out.println("\nRoot: " +  myBST2.root.value);
+        System.out.println("Root->Left: " +  myBST2.root.left.value);
+        System.out.println("Root->Right: " +  myBST2.root.right);
 
     }
 }
