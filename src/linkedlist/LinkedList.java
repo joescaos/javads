@@ -270,6 +270,7 @@ public class LinkedList {
             int currentVal = current.value;
             if (valuesSet.contains(currentVal)) {
                 prev.next = current.next;
+                length--;
             } else {
                 valuesSet.add(currentVal);
                 prev = current;
