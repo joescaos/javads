@@ -14,9 +14,14 @@ public class Main {
         /*myList.append(6);
         System.out.println(myList.findMiddleNode().value);*/
 
-        myList.append(7);
-        myList.append(8);
-        System.out.println(myList.findMiddleNode().value);
+        /*myList.append(7);
+        myList.append(8);*/
+        //System.out.println(myList.findMiddleNode().value);
+        //myList.printList();
+
+        //System.out.println("\n" + myList.findKthFromEnd(10));
+        myList.reverseBetween(1, 3);
+        myList.printList();
 
 
     }

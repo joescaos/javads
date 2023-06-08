@@ -36,15 +36,18 @@ public class LinkedList {
     }
 
     public void getHead() {
-        System.out.println("Head:" + head.value);;
+        System.out.println("Head:" + head.value);
+        ;
     }
 
     public void getTail() {
-        System.out.println("Tail:" + tail.value);;
+        System.out.println("Tail:" + tail.value);
+        ;
     }
 
     public void getLength() {
-        System.out.println("Length:" + length);;
+        System.out.println("Length:" + length);
+        ;
     }
 
     public void append(int value) {
@@ -112,12 +115,12 @@ public class LinkedList {
     }
 
     public boolean set(int index, int value) {
-       Node temp = get(index);
-       if (temp != null) {
-           temp.value = value;
-           return true;
-       }
-       return false;
+        Node temp = get(index);
+        if (temp != null) {
+            temp.value = value;
+            return true;
+        }
+        return false;
     }
 
     public boolean insert(int index, int value) {
@@ -131,7 +134,7 @@ public class LinkedList {
             return true;
         }
         Node newNode = new Node(value);
-        Node temp = get(index -1);
+        Node temp = get(index - 1);
         newNode.next = temp.next;
         temp.next = newNode;
         length++;
@@ -142,7 +145,7 @@ public class LinkedList {
         if (index < 0 || index >= length) return null;
         if (index == 0) return removeFirst();
         if (index == length - 1) removeLast();
-        Node prev = get(index -1);
+        Node prev = get(index - 1);
         Node temp = prev.next;
         prev.next = temp.next;
         temp.next = null;
@@ -173,6 +176,65 @@ public class LinkedList {
             slow = slow.next;
         }
         return slow;
+    }
+
+    public boolean hasLoop() {
+        if (head == null) return false;
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Node findKthFromEnd(int k) {
+
+        Node fast = head;
+        Node slow = head;
+
+        int count = 0;
+
+        while (fast != null) {
+            if (count == k) break;
+            count++;
+            fast = fast.next;
+        }
+
+        if (count == k) {
+            while (fast != null) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            return slow;
+        } else {
+            return null;
+        }
+    }
+
+    public void reverseBetween(int m, int n) {
+        if (head == null) return;
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node prev = dummy;
+
+        for (int i = 0; i < m; i++) {
+            prev = prev.next;
+        }
+        Node current = prev.next;
+        for (int i = 0; i < n - m; i++) {
+            Node temp = current.next;
+            current.next = temp.next;
+            temp.next = prev.next;
+            prev.next = temp;
+        }
+        head = dummy.next;
     }
 
 }
