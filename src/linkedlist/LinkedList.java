@@ -1,6 +1,8 @@
 package linkedlist;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class LinkedList {
 
@@ -229,12 +231,52 @@ public class LinkedList {
         }
         Node current = prev.next;
         for (int i = 0; i < n - m; i++) {
-            Node temp = current.next;
-            current.next = temp.next;
-            temp.next = prev.next;
-            prev.next = temp;
+            Node after = current.next;
+            current.next = after.next;
+            after.next = prev.next;
+            prev.next = after;
         }
         head = dummy.next;
     }
+
+    public void partitionList(int x) {
+       Node left = new Node(0);
+       Node right = new Node(0);
+
+       Node leftTail = left;
+       Node rightTail = right;
+
+       while (head != null) {
+           if (head.value < x) {
+               leftTail.next = head;
+               leftTail = leftTail.next;
+           } else {
+               rightTail.next = head;
+               rightTail = rightTail.next;
+           }
+           head = head.next;
+       }
+
+       leftTail.next = right.next;
+       rightTail.next = null;
+       head = left.next;
+    }
+
+    public void removeDuplicates() {
+        Set<Integer> valuesSet = new HashSet<>();
+        Node current = head;
+        Node prev = null;
+        while (current != null) {
+            int currentVal = current.value;
+            if (valuesSet.contains(currentVal)) {
+                prev.next = current.next;
+            } else {
+                valuesSet.add(currentVal);
+                prev = current;
+            }
+            current = current.next;
+        }
+    }
+
 
 }
