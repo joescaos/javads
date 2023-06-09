@@ -116,4 +116,17 @@ public class BinarySearchTree {
         }
         return currentNode.value;
     }
+
+    public Node lowestCommonAncestor(Node root, int value1, int value2) {
+        if (root == null) {
+            return new Node(0);
+        }
+        if (root.value > Math.max(value1, value2)) {
+            return lowestCommonAncestor(root.left, value1, value2);
+        } else if (root.value < Math.min(value1, value2)) {
+            return lowestCommonAncestor(root.right, value1, value2);
+        } else {
+            return root;
+        }
+    }
 }

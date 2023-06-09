@@ -40,5 +40,7 @@ public class Main {
         System.out.println("Root->Left: " +  myBST2.root.left.value);
         System.out.println("Root->Right: " +  myBST2.root.right);
 
+        System.out.println(myBST.lowestCommonAncestor(myBST.root, 10 , 11).value);
+
     }
 }
