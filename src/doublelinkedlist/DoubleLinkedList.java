@@ -5,6 +5,7 @@ public class DoubleLinkedList {
     private Node head;
     private Node tail;
     private int length;
+
     class Node {
         int value;
         Node next;
@@ -108,11 +109,11 @@ public class DoubleLinkedList {
             }
         } else {
             temp = tail;
-            for (int i = length - 1; i > index ; i--) {
+            for (int i = length - 1; i > index; i--) {
                 temp = temp.prev;
             }
         }
-        return  temp;
+        return temp;
     }
 
     public boolean set(int index, int value) {
@@ -136,7 +137,7 @@ public class DoubleLinkedList {
         }
 
         Node newNode = new Node(value);
-        Node before = get(index -1);
+        Node before = get(index - 1);
         Node after = before.next;
         newNode.prev = before;
         newNode.next = after;
@@ -159,5 +160,51 @@ public class DoubleLinkedList {
         temp.prev = null;
         length--;
         return temp;
+    }
+
+    public void swapFirstLast() {
+        int temp = head.value;
+        head.value = tail.value;
+        tail.value = temp;
+    }
+
+    public void reverse() {
+        Node left = head;
+        Node right = tail;
+
+        for (int i = 0; i < length / 2; i++) {
+            int temp = left.value;
+            left.value = right.value;
+            right.value = temp;
+            left = left.next;
+            right = right.prev;
+        }
+    }
+
+    public boolean isPalindrome() {
+        Node left = head;
+        Node right = tail;
+        for (int i = 0; i <length / 2 ; i++) {
+            if (left.value != right.value) {
+                return false;
+            }
+            left = left.next;
+            right = right.prev;
+        }
+        return true;
+    }
+
+    public void swapPairs() {
+        Node prev = head;
+        Node next = head.next;
+
+        for (int i = 0; i < length; i += 2) {
+            int temp = prev.value;
+            prev.value = next.value;
+            next.value = temp;
+            if (next.next == null) break;
+            prev = prev.next.next;
+            next = next.next.next;
+        }
     }
 }
