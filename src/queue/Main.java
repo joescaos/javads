@@ -3,7 +3,7 @@ package queue;
 public class Main {
 
     public static void main(String[] args) {
-        Queue queue = new Queue(7);
+        /*Queue queue = new Queue(7);
         queue.printQueue();
         System.out.println();
 
@@ -16,7 +16,14 @@ public class Main {
         System.out.println("node removed " + queue.dequeue().value);
         System.out.println("node removed " + queue.dequeue().value);
         System.out.println("node removed " + queue.dequeue());
-        queue.printQueue();
+        queue.printQueue();*/
+
+        MyQueue stackQueue = new MyQueue();
+
+        stackQueue.enqueue(1);
+        stackQueue.enqueue(2);
+        stackQueue.enqueue(3);
+        System.out.println(stackQueue.peek());
 
 
     }
