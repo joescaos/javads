@@ -43,6 +43,34 @@ public class Main {
         }
     }
 
+    private static final char [][] TOKENS = {{'{', '}'}, {'[', ']'}, {'(', ')'}};
+
+    public static boolean isBalanced(String s) {
+        StackGeneric<Character> charStack = new StackGeneric<>();
+        for (char c: s.toCharArray()) {
+            if (isOpenTerm(c)) {
+                charStack.push(c);
+            } else {
+                if (charStack.isEmpty() || !matches(charStack.pop(), c)) {
+                    return false;
+                }
+            }
+        }
+        return charStack.isEmpty();
+    }
+    private static boolean matches(char openTerm, char closeTerm) {
+        for (char[] chars: TOKENS) {
+            if (chars[0] == openTerm) return chars[1] == closeTerm;
+        }
+        return false;
+    }
+    private static boolean isOpenTerm(char c) {
+        for (char[] chars: TOKENS) {
+            if (chars[0] == c) return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         /*Stack stack = new Stack(5);
 
@@ -104,6 +132,9 @@ public class Main {
             5
 
         */
+
+        System.out.println(isBalanced("{[(]}"));
+
 
     }
 
