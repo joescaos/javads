@@ -1,6 +1,23 @@
 package hashtable;
 
+import java.util.HashMap;
+
 public class Main {
+
+    public static boolean itemInCommon(int[] array1, int [] array2) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int j : array1) {
+            if (!map.containsKey(j)) {
+                map.put(j, 1);
+            }
+        }
+        for (int j : array2) {
+            if (map.containsKey(j)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
@@ -22,5 +39,11 @@ public class Main {
         System.out.println();
 
         System.out.println(hashTable.keys());
+        System.out.println();
+
+        int[] array1 = {1, 3, 5};
+        int[] array2 = {2, 4, 5};
+
+        System.out.println(itemInCommon(array1, array2));
     }
 }
