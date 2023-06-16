@@ -19,6 +19,11 @@ public class MyQueue {
         }
     }
 
+    public Integer dequeue() {
+        if (this.isEmpty()) return null;
+        return stack1.pop();
+    }
+
     public int peek() {
         return stack1.peek();
     }

@@ -25,6 +25,10 @@ public class Main {
         stackQueue.enqueue(3);
         System.out.println(stackQueue.peek());
 
+        System.out.println();
+        Integer front = stackQueue.dequeue();
+        System.out.println(front);
+        System.out.println(stackQueue.peek());
 
     }
 }
