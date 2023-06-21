@@ -75,6 +75,20 @@ public class Main {
         return new ArrayList<>(anagramGroups.values());
     }
 
+    public static int[] twoSum(int[] arr, int target){
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            int num = arr[i];
+            int complement = target - num;
+            if (map.containsKey(complement)) {
+                return new int[] {map.get(complement), i};
+            }
+            map.put(num, i);
+
+        }
+        return new int[] {};
+    }
+
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
         hashTable.set("nails", 100);
@@ -116,6 +130,14 @@ public class Main {
 
         System.out.println("\n2nd set:");
         System.out.println(groupAnagrams(new String[]{"abc", "cba", "bac", "foo", "bar"}));
+
+        System.out.println(Arrays.toString(twoSum(new int[]{2, 7, 11, 15}, 9)));
+        System.out.println(Arrays.toString(twoSum(new int[]{3, 2, 4}, 6)));
+        System.out.println(Arrays.toString(twoSum(new int[]{3, 3}, 6)));
+        System.out.println(Arrays.toString(twoSum(new int[]{1, 2, 3, 4, 5}, 10)));
+        System.out.println(Arrays.toString(twoSum(new int[]{1, 2, 3, 4, 5}, 7)));
+        System.out.println(Arrays.toString(twoSum(new int[]{1, 2, 3, 4, 5}, 3)));
+        System.out.println(Arrays.toString(twoSum(new int[]{}, 0)));
 
 
     }
