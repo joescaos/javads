@@ -1,9 +1,6 @@
 package hashtable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -61,6 +58,23 @@ public class Main {
         return null;
     }
 
+    private static List<List<String>> groupAnagrams(String[] strings) {
+        HashMap<String, List<String>> anagramGroups = new HashMap<>();
+        for (String word: strings) {
+            char [] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String canonical = Arrays.toString(chars);
+            if (anagramGroups.containsKey(canonical)) {
+                anagramGroups.get(canonical).add(word);
+            } else {
+                List<String> group = new ArrayList<>();
+                group.add(word);
+                anagramGroups.put(canonical, group);
+            }
+        }
+        return new ArrayList<>(anagramGroups.values());
+    }
+
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
         hashTable.set("nails", 100);
@@ -96,5 +110,13 @@ public class Main {
         System.out.println(firstNonRepeatingChar("leetcode"));
         System.out.println(firstNonRepeatingChar("hello"));
         System.out.println(firstNonRepeatingChar("aabbcc"));
+
+        System.out.println("1st set:");
+        System.out.println(groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
+
+        System.out.println("\n2nd set:");
+        System.out.println(groupAnagrams(new String[]{"abc", "cba", "bac", "foo", "bar"}));
+
+
     }
 }
