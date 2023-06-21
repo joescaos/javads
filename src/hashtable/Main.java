@@ -47,6 +47,20 @@ public class Main {
         return values;*/
     }
 
+    private static Character firstNonRepeatingChar(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (Character letter: s.toCharArray()) {
+            map.put(letter, map.getOrDefault(letter, 0) + 1);
+        }
+
+        for (Character letter: s.toCharArray()) {
+            if (map.get(letter) == 1) {
+                return letter;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
         hashTable.set("nails", 100);
@@ -78,5 +92,9 @@ public class Main {
         int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
         List<Integer> duplicates = findDuplicates(nums);
         System.out.println(duplicates);
+
+        System.out.println(firstNonRepeatingChar("leetcode"));
+        System.out.println(firstNonRepeatingChar("hello"));
+        System.out.println(firstNonRepeatingChar("aabbcc"));
     }
 }
