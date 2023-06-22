@@ -3,14 +3,13 @@ package linkedlist;
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList myList = new LinkedList(1);
-        myList.append(4);
+        LinkedList myList = new LinkedList(2);
+        myList.append(5);
+        myList.append(1);
         myList.append(3);
-        myList.append(2);
+        /*myList.append(5);
         myList.append(5);
-        myList.append(5);
-        myList.append(5);
-        myList.append(2);
+        myList.append(2);*/
 
         //System.out.println(myList.findMiddleNode().value);
 
@@ -28,8 +27,12 @@ public class Main {
 
         //myList.partitionList(3);
 
-        myList.removeDuplicates();
+       /* myList.removeDuplicates();
         System.out.println();
+        myList.printList();*/
+
+        System.out.println();
+        myList.insertionSort();
         myList.printList();
 
 
