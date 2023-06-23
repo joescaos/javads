@@ -31,9 +31,22 @@ public class Main {
         System.out.println();
         myList.printList();*/
 
-        System.out.println();
+        /*System.out.println();
         myList.insertionSort();
-        myList.printList();
+        myList.printList();*/
+
+        System.out.println();
+        LinkedList linkedList = new LinkedList(1);
+        linkedList.append(3);
+        linkedList.append(5);
+        LinkedList linkedList2 = new LinkedList(2);
+        linkedList2.append(4);
+        linkedList2.append(6);
+
+        linkedList.merge(linkedList2);
+
+        linkedList.printList();
+
 
 
     }

@@ -313,5 +313,32 @@ public class LinkedList {
         tail = temp;
     }
 
+    public void merge(LinkedList anotherList) {
+        Node otherHead = anotherList.head;
+        Node dummy = new Node(0);
+        Node current = dummy;
+
+        while (head != null && otherHead != null) {
+            if (head.value < otherHead.value) {
+                current.next = head;
+                head = head.next;
+            } else {
+                current.next = otherHead;
+                otherHead = otherHead.next;
+            }
+            current = current.next;
+        }
+
+        if (head != null) {
+            current.next = head;
+        } else {
+            current.next = otherHead;
+            tail = anotherList.tail;
+        }
+
+        this.head = dummy.next;
+        length += anotherList.length;
+    }
+
 
 }
