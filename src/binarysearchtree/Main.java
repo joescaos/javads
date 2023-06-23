@@ -57,5 +57,10 @@ public class Main {
 
         System.out.println(bst.BreathFirstSearch());
 
+        System.out.println(bst.DFSPreorder());
+
+        System.out.println(bst.DFSPostOrder());
+
+        System.out.println(bst.DFSInOrder());
     }
 }
