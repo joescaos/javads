@@ -1,7 +1,6 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Graph {
 
@@ -44,5 +43,44 @@ public class Graph {
         }
         adjList.remove(vertex);
         return true;
+    }
+
+    public boolean hasPathDFS(String src, String dest) {
+        HashSet<String> visited = new HashSet<>();
+        return hasPathDFS(src, dest, visited);
+    }
+
+    private boolean hasPathDFS(String src, String dest, HashSet<String> visited) {
+        if (visited.contains(src)) return false;
+
+        visited.add(src);
+        if (src.equals(dest)) return true;
+        for (String child : adjList.get(src)) {
+            if (hasPathDFS(child, dest, visited)) return true;
+        }
+
+        return false;
+    }
+
+    public boolean hashPathBFS(String src, String dest) {
+        Queue<String> queue = new LinkedList<>();
+        HashSet<String> visited = new HashSet<>();
+        queue.add(src);
+        while (!queue.isEmpty()) {
+            String current = queue.remove();
+            if (current.equals(dest)) {
+                return true;
+            }
+            if (visited.contains(current)) {
+                continue;
+            }
+            visited.add(current);
+
+            for (String child : adjList.get(current)) {
+                queue.add(child);
+            }
+        }
+        return false;
+
     }
 }
