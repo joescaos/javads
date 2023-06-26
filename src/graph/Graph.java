@@ -83,4 +83,23 @@ public class Graph {
         return false;
 
     }
+
+    public int connectedComponentsCount() {
+        int count = 0;
+        HashSet<String> visited = new HashSet<>();
+        for (String key : adjList.keySet()) {
+            if (explore(key, visited)) count++;
+        }
+        return  count;
+    }
+
+    private boolean explore(String key, HashSet<String> visited) {
+        if (visited.contains(key)) return false;
+
+        visited.add(key);
+        for (String child : adjList.get(key)) {
+            explore(child, visited);
+        }
+        return true;
+    }
 }

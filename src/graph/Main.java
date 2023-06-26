@@ -28,6 +28,8 @@ public class Main {
         System.out.println(myGraph.hashPathBFS("A", "D"));
         System.out.println(myGraph.hashPathBFS("B", "E"));
 
+        System.out.println();
+        System.out.println(myGraph.connectedComponentsCount());
 
 
     }
