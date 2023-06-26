@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Graph {
 
-    private HashMap<String, ArrayList<String>> adjList = new HashMap<>();
+    public HashMap<String, ArrayList<String>> adjList = new HashMap<>();
 
     public void printGraph() {
         System.out.println(adjList);
@@ -124,5 +124,32 @@ public class Graph {
         }
 
         return size;
+    }
+
+    public int shortestPath(String src, String dst) {
+        HashSet<String> visited = new HashSet<>();
+        Queue<Map<String, Integer>> queue = new LinkedList<>();
+
+        queue.add(Map.of(src, 0));
+
+        while (!queue.isEmpty()) {
+            Map<String, Integer> current = queue.remove();
+            String key = String.valueOf(current.keySet().toArray()[0]);
+            int distance = current.get(key);
+            if (key.equals(dst)) {
+                return distance;
+            }
+
+            for (String child: adjList.get(key)) {
+                if (!visited.contains(child)) {
+                    visited.add(child);
+                    queue.add(Map.of(child, distance + 1));
+                }
+            }
+
+        }
+
+        return -1;
+
     }
 }
