@@ -102,4 +102,27 @@ public class Graph {
         }
         return true;
     }
+
+    public int largestComponent() {
+        HashSet<String> visited = new HashSet<>();
+        int largest = 0;
+        for (String key: adjList.keySet()) {
+            int size = exploreSize(key, visited);
+            if (size > largest) largest = size;
+        }
+
+        return largest;
+    }
+
+    private int exploreSize(String key, HashSet<String> visited) {
+        if (visited.contains(key)) return 0;
+
+        visited.add(key);
+        int size = 1;
+        for (String child: adjList.get(key)) {
+            size += exploreSize(child, visited);
+        }
+
+        return size;
+    }
 }

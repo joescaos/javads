@@ -31,6 +31,9 @@ public class Main {
         System.out.println();
         System.out.println(myGraph.connectedComponentsCount());
 
+        System.out.println();
+        System.out.println(myGraph.largestComponent());
+
 
     }
 }
