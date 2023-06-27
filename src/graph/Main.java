@@ -1,9 +1,6 @@
 package graph;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
 
@@ -47,6 +44,16 @@ public class Main {
         System.out.println();
         System.out.println(shortestPath(myGraph, "A", "B"));
 
+        int[][] islandGrid = new int[][] {
+                {0, 1, 1, 0, 0},
+                {0, 1, 0, 0, 0},
+                {0, 0, 1, 1, 0},
+                {0, 0, 1, 1, 0}
+        };
+
+        System.out.println("Number of island: " + islandCount(islandGrid));
+
+        System.out.println("Min size island in grid is: " + minIslandCount(islandGrid));
 
     }
 
@@ -75,5 +82,78 @@ public class Main {
 
         return -1;
 
+    }
+
+    public static int islandCount(int[][] grid) {
+        HashSet<String> visited = new HashSet<>();
+        int count = 0;
+
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                if (explore(grid, r, c, visited)) count += 1;
+            }
+
+        }
+        return count;
+    }
+
+    private static boolean explore(int[][] grid, int r, int c, Set<String> visited) {
+        boolean rowInbounds = 0 <= r && r < grid.length;
+        boolean columnInbounds = 0 <= c && c < grid[0].length;
+
+        if(!rowInbounds || !columnInbounds) return false;
+
+        if (grid[r][c] == 0)return false;
+        String position = String.valueOf(r) + ',' + c;
+
+        if (visited.contains(position)) return false;
+
+        visited.add(position);
+
+        explore(grid, r - 1, c, visited);
+        explore(grid, r + 1, c, visited);
+        explore(grid, r, c - 1, visited);
+        explore(grid, r, c + 1, visited);
+
+        return true;
+    }
+
+    public static int minIslandCount(int[][] grid) {
+        HashSet<String> visited = new HashSet<>();
+        int min = Integer.MAX_VALUE;
+
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                int islandSize = exploreSize(grid, r, c, visited);
+                if (islandSize > 0 && islandSize < min) {
+                    min = islandSize;
+                }
+            }
+
+        }
+        return min;
+    }
+
+    private static int exploreSize(int[][] grid, int r, int c, Set<String> visited) {
+        boolean rowInbounds = 0 <= r && r < grid.length;
+        boolean columnInbounds = 0 <= c && c < grid[0].length;
+
+        if(!rowInbounds || !columnInbounds) return 0;
+
+        if (grid[r][c] == 0)return 0;
+        String position = String.valueOf(r) + ',' + c;
+
+        if (visited.contains(position)) return 0;
+
+        visited.add(position);
+
+        int size = 1;
+
+        size += exploreSize(grid, r - 1, c, visited);
+        size += exploreSize(grid, r + 1, c, visited);
+        size += exploreSize(grid, r, c - 1, visited);
+        size += exploreSize(grid, r, c + 1, visited);
+
+        return size;
     }
 }
