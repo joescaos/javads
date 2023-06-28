@@ -62,5 +62,8 @@ public class Main {
         System.out.println(bst.DFSPostOrder());
 
         System.out.println(bst.DFSInOrder());
+
+        //bst.traverseInOrder();
+        System.out.println("my dfs " + bst.traverseInOrder());
     }
 }

@@ -207,4 +207,18 @@ public class BinarySearchTree {
         new Traverse(root);
         return results;
     }
+
+    public List<Integer> traverseInOrder() {
+        List<Integer> result = new ArrayList<>();
+        return traverseInOrder(root, result);
+    }
+    private List<Integer> traverseInOrder(Node node, List<Integer> result) {
+        if (node != null) {
+            traverseInOrder(node.left, result);
+            //System.out.println(" " + node.value);
+            result.add(node.value);
+            traverseInOrder(node.right, result);
+        }
+        return result;
+    }
 }
