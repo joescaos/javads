@@ -40,7 +40,7 @@ public class Main {
         System.out.println("Root->Left: " +  myBST2.root.left.value);
         System.out.println("Root->Right: " +  myBST2.root.right);
 
-        System.out.println(myBST.lowestCommonAncestor(myBST.root, 10 , 11).value);
+        System.out.println("lowest common ancestor: " + myBST.lowestCommonAncestor(myBST.root, 18 , 27).value);
 
         System.out.println();
         System.out.println("Breath First Search");

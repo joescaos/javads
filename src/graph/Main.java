@@ -54,7 +54,32 @@ public class Main {
         System.out.println("Number of island: " + islandCount(islandGrid));
 
         System.out.println("Min size island in grid is: " + minIslandCount(islandGrid));
+        int[][] minimum = new int[][] {
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}
+        };
 
+        System.out.println(myShortest(minimum));
+
+
+    }
+
+    private static int myShortest(int[][] grid) {
+        int n = grid.length, m = grid[0].length;
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < m; c++) {
+                int top = r - 1 < 0 ? Integer.MAX_VALUE : grid[r - 1][c];
+                int bottom = c - 1 < 0 ? Integer.MAX_VALUE : grid[r][c - 1];
+                int min = top == Integer.MAX_VALUE && bottom == Integer.MAX_VALUE ? 0
+                        : Math.min(top, bottom);
+
+                grid[r][c] += min;
+            }
+
+        }
+
+        return grid[m - 1][n - 1];
     }
 
     public static int shortestPath(Graph graph, String src, String dst) {
