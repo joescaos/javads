@@ -85,35 +85,32 @@ public class Main {
     }
 
     public static int islandCount(int[][] grid) {
-        HashSet<String> visited = new HashSet<>();
+        //HashSet<String> visited = new HashSet<>();
         int count = 0;
 
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
-                if (explore(grid, r, c, visited)) count += 1;
+                if (explore(grid, r, c)) count += 1;
             }
 
         }
         return count;
     }
 
-    private static boolean explore(int[][] grid, int r, int c, Set<String> visited) {
+    private static boolean explore(int[][] grid, int r, int c) {
         boolean rowInbounds = 0 <= r && r < grid.length;
         boolean columnInbounds = 0 <= c && c < grid[0].length;
 
         if(!rowInbounds || !columnInbounds) return false;
 
         if (grid[r][c] == 0)return false;
-        String position = String.valueOf(r) + ',' + c;
+        //String position = String.valueOf(r) + ',' + c;
 
-        if (visited.contains(position)) return false;
-
-        visited.add(position);
-
-        explore(grid, r - 1, c, visited);
-        explore(grid, r + 1, c, visited);
-        explore(grid, r, c - 1, visited);
-        explore(grid, r, c + 1, visited);
+        grid[r][c] = 0;
+        explore(grid, r - 1, c);
+        explore(grid, r + 1, c);
+        explore(grid, r, c - 1);
+        explore(grid, r, c + 1);
 
         return true;
     }
